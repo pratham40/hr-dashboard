@@ -11,7 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { fetchUser } from "@/utils/fetchUser";
 import axios from "axios";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
