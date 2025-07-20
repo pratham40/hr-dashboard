@@ -4,6 +4,7 @@ import React from 'react';
 import RatingStar from './RatingStar';
 import { useRouter } from 'next/navigation';
 import { useBookmarks } from '@/context/BookmarkContext';
+import { toast } from 'sonner';
 export default function UserCard({user}){
     const [visible, setVisible] = React.useState(false);
     const [position, setPosition] = React.useState({ x: 0, y: 0 });
@@ -57,7 +58,7 @@ export default function UserCard({user}){
                     <button className='bg-blue-500 text-white py-2 px-4 rounded-md hover:cursor-pointer' onClick={()=> router.push(`/employee/${user.id}`)}>
                         View Details
                     </button>
-                    <button onClick={()=>addBookmark(user)} className='bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:cursor-pointer'>
+                    <button onClick={()=>{addBookmark(user); toast.success("User bookmarked successfully");}} className='bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:cursor-pointer'>
                         Bookmark
                     </button>
                 </div>

@@ -8,7 +8,12 @@ export function BookmarkProvider({ children }) {
 
   const addBookmark = (user) => {
     setBookmarks((prev) => {
-        return [...prev,user]
+
+      const exists = prev.some((u) => u.id === user.id);
+      if (exists) {
+        return prev;
+      }
+      return [...prev, user];
     });
   };
 
