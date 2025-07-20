@@ -7,10 +7,11 @@ import { toast } from "sonner";
 
 export default function Home() {
   const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function loadUsers() {
-      const data = await fetchUser();
+      const data = await fetchUser(page);
       if (!data || data.length === 0) {
         toast.error("No users found");
         setUsers([]);
@@ -18,12 +19,20 @@ export default function Home() {
       }
       setUsers(data);
       toast.success("Users loaded successfully");
-      
+
     }
     loadUsers();
-  }, []);
+  }, [page]);
+
+  function handleNext() {
+    setPage((prev) => prev + 1);
+  }
+
+  function handlePrev() {
+    setPage((prev) => (prev > 1 ? prev - 1 : 1));
+  }
 
   return (
-    <HomePage users={users} />
+    <HomePage users={users} page={page} onNext={handleNext} onPrev={handlePrev} />
   );
 }
