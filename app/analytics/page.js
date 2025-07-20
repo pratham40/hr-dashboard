@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { fetchUser } from "@/utils/fetchUser";
+import axios from "axios";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -20,9 +21,9 @@ export default function Analytics() {
 
   useEffect(() => {
     async function loadChartData() {
-      const users = await fetchUser();
+      const {data} = await axios.get(`https://dummyjson.com/users`);
 
-      const titleCounts = users.reduce((acc, user) => {
+      const titleCounts = data.users.reduce((acc, user) => {
         const title = user.company.title ;
         acc[title] = (acc[title] || 0) + 1;
         return acc;
