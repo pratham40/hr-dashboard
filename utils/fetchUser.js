@@ -8,4 +8,5 @@ export async function fetchUser() {
                 performanceRating: Math.floor(Math.random()*5)+1
             }
         ))
+        return users;
 }
