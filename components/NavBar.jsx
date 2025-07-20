@@ -8,7 +8,7 @@ function NavBar() {
     const { data: session } = useSession()
 
     return (
-        <nav className="bg-white shadow-md px-8 py-4 flex justify-between items-center">
+        <nav className="shadow-md px-8 py-4 flex justify-between items-center">
             <div className="flex items-center gap-8">
                 <Link href="/" className="text-2xl font-bold text-blue-700 tracking-tight hover:text-blue-900 transition">
                     HR Dashboard
